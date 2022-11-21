@@ -35,7 +35,12 @@ class Matrix {
    * @param cols The number of columns
    *
    */
-  Matrix(int rows, int cols) {}
+  Matrix(int rows, int cols) {
+    cols_ = cols;
+    rows_ = rows;
+    linear_ = new T(rows * cols);
+    memset(linear_, 0, rows * cols);//initialize the array
+  }
 
   /** The number of rows in the matrix */
   int rows_;
@@ -95,7 +100,9 @@ class Matrix {
    * Destroy a matrix instance.
    * TODO(P0): Add implementation
    */
-  virtual ~Matrix() = default;
+  virtual ~Matrix(){
+    delete []linear_;
+  }
 };
 
 /**
